@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>NYT Group Project (08-21 Chad, Chris, Catherine, Ray)</title>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+<!--	Note the jQuery UI plugin. This was required for the calendar picker-->
+	<link rel="stylesheet" href="assets/css/jquery-ui.css">
+<!--	Our custom styles overlayed to BS4 so this must be the last css included-->
+	<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-3"><strong>New York Times Search</strong></h1>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header">
+			<h1>Search Parameters</h1>
+		</div>
+		
+		<div class="card-block">
+
+			<form enctype="multipart/form-data">
+
+				<div class="form-group" id="q-container">
+					<label for="q">Article:</label>
+					<input class="form-control" type="text" id="q" type="text" autocomplete="off" />
+				</div>
+
+				<div class="form-group" id="begin_date-container">
+					<label for="begin_date">Begin Date:</label>
+					<input class="form-control" type="text" id="begin_date" value="Select a Date" readonly>
+				</div>
+
+				<div class="form-group" id="end_date-container">
+					<label for="end_date">End Date:</label>
+					<input class="form-control" type="text" id="end_date" value="Select a Date" readonly>
+				</div>
+
+				<div class="form-group" id="limit-container">
+					<label for="limit">Limit:</label>
+					<select class="form-control" id="limit">
+						<option value="5">5</option>
+						<option value="10">10</option>
+						<option value="20">20</option>
+					</select>
+				</div>
+
+				<button type="button" class="btn btn-primary" id="search-btn">Search</button>
+				<button type="reset" class="btn btn-primary" id="clear-btn">Clear</button>
+
+			</form>
+        
+		</div>
+
+	</div>
+
+	<div class="card">
+		<div class="card-header">
+			<h1>Top Articles</h1>
+		</div>
+		
+		<div class="card-block" id="results-layer">
+
+		</div>
+	</div>
+
+<!--	this is a template card that will be cloned and used inside the #results-layer element. The id original-card has a display: none !important in our custom styles in styles.css. When we clone/copy this in JS we will strip out this id to make sure we don't create elements with the same id. See processJSON function in scripts.js-->
+	<div id="original-card">
+		<div class="counter">Number</div>
+		<h1 class="article-header">Header</h1>
+		<p class="article-author">By: <span id="author-name"></span></p>
+		<p class="article-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic vero, labore repellendus beatae, qui earum accusantium dignissimos nobis voluptatibus totam eaque excepturi tempore quis libero. Nostrum pariatur atque deleniti, ea.</p>
+		<a href="" class="article-link">asdasdasdasd.com</a>
+		<hr>
+	</div>   
+   
+<!--   scripts down here just before the closing body tag is the general wisdom because none of this needs to run until all of that up there is loaded first and all this stuff is processed from the top dizzle.-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="assets/scripts/scripts.js"></script>
+    
+</body>
+</html>
